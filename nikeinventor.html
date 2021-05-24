@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        #box1{
+          border: black 1px solid;width: 60%; margin: 2%; float: left;
+        }
+        .box2{
+    
+            margin: 10px;
+            width: 200px;  border:black 1px solid;
+            float: left;
+
+        }
+        .button1{
+            margin-top:auto;
+            
+        }
+       
+        .gap{
+            margin: 10px;
+        }
+        .imageclass{
+            width: 50px;
+            height: 50px;
+            background-color: brown;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="border: black 1px solid;  text-align: center;">
+        <div style="border: black 1px solid; width:30% ;height: 800px; margin-top: 2%; float: left;">
+        <div style="padding: 5%;">
+        <input type="text" placeholder="name" class="classitem"><br>
+        <br>
+        <input type="number" placeholder="price" class="classitem"><br><br>
+        <input type="text" placeholder="Description" class="classitem"><br><br>
+        <input type="text" placeholder="Estimated delivery" class="classitem"><br><br>
+        <input type="text" placeholder="imageUrl" class="classitem"><br><br>
+        <button style="color: chartreuse; border-radius: 5%;" onclick="fun1()">Add product</button>
+        </div>
+    </div>
+        <div id="box1" >
+            
+        
+        
+        </div>
+    </div>
+    
+</body>
+</html>
+<script>
+    var name1=[];
+    var price=[]
+    var descr=[];
+    var exdel=[];
+    var imageurl=[];
+    var count=0;
+    var remove1=0
+    function fun1(){
+        console.log(name1);
+
+        console.log("hi");
+        var a=document.getElementsByClassName("classitem");
+        name1.push(a[0].value)
+        price.push(a[1].value)
+        descr.push(a[2].value);
+        exdel.push(a[3].value);
+
+       var img1=document.createElement("img");
+       img1.setAttribute("class","imageclass")
+       img1.src=imageurl[count];
+       var upperdiv= document.getElementById("box1")
+        var div=document.createElement("div");
+        var p=document.createElement("p");
+        var h6=document.createElement("h6");
+        h6.innerHTML=price[count];
+        p.textContent= name1[count];
+    
+        var p1=document.createElement("p");
+        p1.textContent=+descr[count]+" "+exdel[count];
+        var button=document.createElement("button");
+        button.setAttribute("class","button1");
+        
+        button.setAttribute("value",count);
+        button.textContent="remove";
+        var value=button.value;
+        button.setAttribute("onclick", "fun2(value)");
+        var button1= document.createElement("button");
+        button1.setAttribute("value",count);
+       
+        
+        button1.setAttribute("onclick", "fun3(value)");
+        button1.setAttribute("class", "button1");
+        button1.textContent = "update";
+        div.appendChild(img1)
+        div.appendChild(p);
+        div.appendChild(h6);
+        div.appendChild(p1);
+        div.appendChild(button);
+        div.appendChild(button1)
+
+        div.setAttribute("class","box2");
+        
+        upperdiv.appendChild(div);
+        count++;
+    }
+    function fun2(u){
+        
+        
+        var all=document.getElementsByClassName("box2");
+       
+        if (u > all.length){
+            if((u-remove1)<0){
+                all[0].remove();
+            }
+            else{
+             all[u - remove1].remove();
+            }
+        }
+        else{
+         all[u].remove();
+        }
+        remove1++;
+       
+    }
+    function fun3(u) {
+       var newprice= prompt("enter new price");
+       var a=document.getElementsByClassName("box2");
+       console.log(a);
+       a[u].h6.innerHTML=newprice;
+      
+       name1[u]=newprice;
+    
+
+        
+           
+            
+
+            
+
+        }
+</script>
