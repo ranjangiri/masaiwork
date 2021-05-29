@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        .classbox {
+            border: 1px solid;
+            margin-top: 20px;
+            width: 300px;
+        }
+
+        .classsubmit {
+            background-color: chartreuse;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <input type="text" id="box1" placeholder="enter your name">
+
+    <button onclick="fun1()">submit</button>
+
+
+    <div style="margin-top: 100px; width: auto;" id="box2">
+
+    </div>
+
+</body>
+<script>
+    //here i have made a constructor function 
+    function Task(name, c) {
+        if (c === undefined) {
+            c = "false";
+        }
+        this.firstName = name;
+        this.date = date()
+        this.status = c;
+
+
+    }
+    // this function return the date
+    function date() {
+        var today = new Date();
+
+        var date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
+        return date;
+    }
+    var flag = false;
+    var count = 0;
+    var value = "";
+    //adding toogle function to set satus true
+    function toggle() {
+        flag = true;
+    }
+
+
+    // on click submit button  this fun will run
+    function fun1() {
+
+        var name = document.getElementById("box1").value;
+        if (flag) {
+            name = new Task.apply(name,[name, "true"]);
+        }
+        else {
+            name = new Task(name);
+
+        }
+        var div = document.createElement("div");
+        div.setAttribute("id", "id" + count);
+
+        div.setAttribute("class", "classbox");
+
+        var ul = document.createElement("ul");
+        var li = document.createElement("li");
+        li.textContent = name.firstName;
+        ul.appendChild(li);
+        var li2 = document.createElement("li");
+        li2.textContent = name.date;
+        ul.appendChild(li2);
+        var li1 = document.createElement("li");
+        li1.textContent = name.status;
+        ul.appendChild(li1);
+        div.appendChild(ul);
+        var remove = document.createElement("button");
+        var done = document.createElement("button");
+        remove.textContent = "remove";
+        done.textContent = "done";
+        done.setAttribute("value", count);
+        remove.setAttribute("value", count);
+        remove.setAttribute("onclick", `funremove(this.value)`);
+        done.setAttribute("onclick", "fundone(this.value)")
+
+        div.appendChild(remove);
+        div.appendChild(done);
+
+        var a = document.getElementById("box2");
+        a.appendChild(div);
+        count++;
+
+    }
+    function funremove(a) {
+        var div = document.getElementById("id" + a);
+        div.remove();
+
+    }
+    function fundone(a) {
+        var div = document.getElementById("id" + a);
+        div.setAttribute("class", "classsubmit classbox")
+
+    }
+
+
+</script>
+
+</html>
