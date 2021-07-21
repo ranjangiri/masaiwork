@@ -1,0 +1,28 @@
+.tableDiv {
+  width: 100vw;
+  padding: 30px;
+}
+.table {
+  width: 95%;
+  overflow-wrap: break-word;
+  margin: auto;
+}
+.table > th {
+  display: grid;
+
+  grid-template-columns: 15% 5% 25% 15% 15% 15%;
+}
+.table > tr {
+  text-align: center;
+  display: grid;
+  grid-template-columns: 15% 5% 25% 15% 15% 15%;
+}
+.flex {
+  display: grid;
+
+  margin-top: 20px;
+  margin: auto;
+}
+.top {
+  margin-top: 20px;
+}
