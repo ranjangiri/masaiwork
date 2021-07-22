@@ -2,6 +2,7 @@
 
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import styled from "styled-components";
 
 const responsive = {
   superLargeDesktop: {
@@ -28,8 +29,9 @@ const responsive = {
 
 export function Slide({ data }) {
   console.log(data[0]);
-    return <>
-   <Carousel responsive={responsive}>
+  return <>
+  
+   <Carousel  responsive={responsive} containerClass="carousel-container"  showDots={true}  autoPlaySpeed={1000} draggable={false} transitionDuration={500}  customTransition="all .5"  infinite={true}>
         <div><img src={data[0]} alt="" />
           Item 1</div>
         <div><img src={data[1]}alt="" />
@@ -48,6 +50,7 @@ export function Slide({ data }) {
           Item 2</div>
         
 
-</Carousel>;
+      </Carousel>
+  
         </>
 }
